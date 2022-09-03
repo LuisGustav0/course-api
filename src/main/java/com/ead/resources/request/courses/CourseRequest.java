@@ -15,13 +15,15 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateCourseRequest {
+public class CourseRequest {
 
     @NotEmpty
     private String name;
 
     @NotEmpty
     private String description;
+
+    private String imageUrl;
 
     @NotNull
     private CourseStatusE statusE;

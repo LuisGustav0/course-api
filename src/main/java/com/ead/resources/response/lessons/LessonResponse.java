@@ -1,7 +1,5 @@
-package com.ead.resources.response.courses;
+package com.ead.resources.response.lessons;
 
-import com.ead.enums.CourseLevelE;
-import com.ead.enums.CourseStatusE;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,15 +13,12 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateCourseResponse {
+public class LessonResponse {
 
     private UUID id;
-    private String name;
+    private String title;
     private String description;
-    private CourseStatusE statusE;
-    private CourseLevelE levelE;
-    private UUID userInstructorId;
-
+    private String videoUrl;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime createdAt;

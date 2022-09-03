@@ -6,7 +6,6 @@ import com.ead.resources.assembler.modules.response.ModuleResponseAssembler;
 import com.ead.resources.response.modules.ModuleResponse;
 import com.ead.resources.response.modules.PageModuleResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

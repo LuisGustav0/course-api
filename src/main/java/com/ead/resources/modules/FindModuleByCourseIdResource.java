@@ -19,7 +19,6 @@ public class FindModuleByCourseIdResource {
     @GetMapping("/courses/{courseId}/modules/{id}")
     public ResponseEntity<ModuleResponse> call(@PathVariable UUID id,
                                                @PathVariable UUID courseId) {
-
         final ModuleResponse response = this.service.call(id, courseId);
 
         return ResponseEntity.ok(response);

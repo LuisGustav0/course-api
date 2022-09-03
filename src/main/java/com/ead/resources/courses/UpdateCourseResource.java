@@ -1,7 +1,7 @@
 package com.ead.resources.courses;
 
-import com.ead.resources.request.courses.UpdateCourseRequest;
-import com.ead.resources.response.courses.UpdateCourseResponse;
+import com.ead.resources.request.courses.CourseRequest;
+import com.ead.resources.response.courses.CourseResponse;
 import com.ead.services.courses.UpdateCourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +20,9 @@ public class UpdateCourseResource {
     private final UpdateCourseService service;
 
     @PutMapping("/courses/{id}")
-    public ResponseEntity<UpdateCourseResponse> call(@PathVariable UUID id,
-                                                     @RequestBody @Valid UpdateCourseRequest request) {
-        final UpdateCourseResponse response = this.service.call(id, request);
+    public ResponseEntity<CourseResponse> call(@PathVariable UUID id,
+                                                     @RequestBody @Valid CourseRequest request) {
+        final CourseResponse response = this.service.call(id, request);
 
         return ResponseEntity.ok(response);
     }

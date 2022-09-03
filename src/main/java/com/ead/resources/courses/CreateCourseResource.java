@@ -1,7 +1,7 @@
 package com.ead.resources.courses;
 
-import com.ead.resources.request.courses.CreateCourseRequest;
-import com.ead.resources.response.courses.CreateCourseResponse;
+import com.ead.resources.request.courses.CourseRequest;
+import com.ead.resources.response.courses.CourseResponse;
 import com.ead.services.courses.CreateCourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,8 +19,8 @@ public class CreateCourseResource {
     private final CreateCourseService service;
 
     @PostMapping("/courses")
-    public ResponseEntity<CreateCourseResponse> call(@RequestBody @Valid CreateCourseRequest request) {
-        final CreateCourseResponse response = this.service.call(request);
+    public ResponseEntity<CourseResponse> call(@RequestBody @Valid CourseRequest request) {
+        final CourseResponse response = this.service.call(request);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

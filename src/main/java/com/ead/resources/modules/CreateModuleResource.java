@@ -1,7 +1,7 @@
 package com.ead.resources.modules;
 
-import com.ead.resources.request.modules.CreateModuleRequest;
-import com.ead.resources.response.modules.CreateModuleResponse;
+import com.ead.resources.request.modules.ModuleRequest;
+import com.ead.resources.response.modules.ModuleResponse;
 import com.ead.services.modules.CreateModuleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,9 +21,9 @@ public class CreateModuleResource {
     private final CreateModuleService service;
 
     @PostMapping("/courses/{courseId}/modules")
-    public ResponseEntity<CreateModuleResponse> call(@PathVariable UUID courseId,
-                                                     @RequestBody @Valid CreateModuleRequest request) {
-        final CreateModuleResponse response = this.service.call(courseId, request);
+    public ResponseEntity<ModuleResponse> call(@PathVariable UUID courseId,
+                                               @RequestBody @Valid ModuleRequest request) {
+        final ModuleResponse response = this.service.call(courseId, request);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

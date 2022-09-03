@@ -2,10 +2,10 @@ package com.ead.services.modules;
 
 import com.ead.model.ModuleModel;
 import com.ead.repositories.ModuleRepository;
-import com.ead.resources.assembler.modules.request.UpdateModuleRequestAssembler;
-import com.ead.resources.assembler.modules.response.UpdateModuleResponseAssembler;
-import com.ead.resources.request.modules.UpdateModuleRequest;
-import com.ead.resources.response.modules.UpdateModuleResponse;
+import com.ead.resources.assembler.modules.request.ModuleRequestAssembler;
+import com.ead.resources.assembler.modules.response.ModuleResponseAssembler;
+import com.ead.resources.request.modules.ModuleRequest;
+import com.ead.resources.response.modules.ModuleResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +17,17 @@ public class UpdateModuleService {
 
     private final ModuleRepository repository;
 
-    private final UpdateModuleRequestAssembler requestAssembler;
-    private final UpdateModuleResponseAssembler responseAssembler;
+    private final ModuleRequestAssembler requestAssembler;
+    private final ModuleResponseAssembler responseAssembler;
 
     private final FindModuleByIdAndCourseIdOrElseThrowService findByIdAndCourseIdOrElseThrowService;
 
-    public UpdateModuleResponse call(final UUID id,
-                                     final UUID courseId,
-                                     final UpdateModuleRequest request) {
+    public ModuleResponse call(final UUID id,
+                               final UUID courseId,
+                               final ModuleRequest request) {
         final ModuleModel module = this.findByIdAndCourseIdOrElseThrowService.call(id, courseId);
 
-        this.requestAssembler.copyProperties(module, request);
+        this.requestAssembler.copyProperties(request, module);
 
         final ModuleModel moduleSave = this.repository.save(module);
 

@@ -1,4 +1,4 @@
-package com.ead.resources.request.modules;
+package com.ead.resources.request.lessons;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,11 +11,13 @@ import javax.validation.constraints.NotEmpty;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateModuleRequest {
+public class LessonRequest {
 
     @NotEmpty
     private String title;
 
     @NotEmpty
     private String description;
+
+    private String videoUrl;
 }

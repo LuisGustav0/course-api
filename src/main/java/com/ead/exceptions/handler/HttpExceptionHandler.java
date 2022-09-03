@@ -2,6 +2,7 @@ package com.ead.exceptions.handler;
 
 import com.ead.enums.ErrorType;
 import com.ead.exceptions.CourseNotFoundException;
+import com.ead.exceptions.LessonNotFoundException;
 import com.ead.exceptions.ModuleNotFoundException;
 import com.ead.factory.HttpErrorResponseFactory;
 import com.ead.model.http.HttpErrorResponse;
@@ -56,6 +57,15 @@ public class HttpExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ModuleNotFoundException.class)
     public ResponseEntity<HttpErrorResponse> handleModuleNotFoundException(ModuleNotFoundException ex) {
+        logger.error(ex.getMessage());
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(HttpErrorResponseFactory.build(ex.getErrorCode(), ex.getMessage()));
+    }
+
+    @ExceptionHandler(LessonNotFoundException.class)
+    public ResponseEntity<HttpErrorResponse> handleModuleNotFoundException(LessonNotFoundException ex) {
         logger.error(ex.getMessage());
 
         return ResponseEntity
