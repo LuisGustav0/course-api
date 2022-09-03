@@ -6,6 +6,7 @@ import com.ead.resources.assembler.courses.request.CourseRequestAssembler;
 import com.ead.resources.assembler.courses.response.CourseResponseAssembler;
 import com.ead.resources.request.courses.CourseRequest;
 import com.ead.resources.response.courses.CourseResponse;
+import com.ead.validations.ValidCourseByNameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,11 @@ public class CreateCourseService {
     private final CourseRequestAssembler requestAssembler;
     private final CourseResponseAssembler responseAssembler;
 
+    private final ValidCourseByNameService validByNameService;
+
     public CourseResponse call(final CourseRequest request) {
+        this.validByNameService.call(request.getName());
+
         final CourseModel course = this.requestAssembler.toModel(request);
 
         final CourseModel courseSaved = this.repository.save(course);

@@ -9,20 +9,49 @@ import com.ead.resources.response.courses.PageCourseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.ead.services.specifications.CourseSpec.withLevelEquals;
+import static com.ead.services.specifications.CourseSpec.withNameLike;
+import static com.ead.services.specifications.CourseSpec.withStatusEquals;
+
 @Service
 @RequiredArgsConstructor
-public class PageCourseService {
+public class PageableCourseService {
 
     private final CourseRepository repository;
 
     private final CourseResponseAssembler assembler;
 
+    private Specification<CourseModel> getSpecification(final CourseFilter filter) {
+        Specification<CourseModel> spec = null;
+
+        if (filter.isNameNotEmpty())
+            spec = withNameLike(filter.getName());
+
+        if (filter.isStatusNotNull())
+            if (spec != null)
+                spec.and(withStatusEquals(filter.getStatusE()));
+            else
+                spec = withStatusEquals(filter.getStatusE());
+
+        if (filter.isLevelNotNull()) {
+            if (spec != null)
+                spec.and(withLevelEquals(filter.getLevelE()));
+            else
+                spec = withLevelEquals(filter.getLevelE());
+        }
+
+        return spec;
+    }
+
     public PageCourseResponse call(final CourseFilter filter, final Pageable pageable) {
-        final Page<CourseModel> pageCourse = this.repository.findAll(pageable);
+        final Specification<CourseModel> spec = getSpecification(filter);
+
+        final Page<CourseModel> pageCourse = this.repository.findAll(spec, pageable);
 
         final List<CourseResponse> data = this.assembler.toListResponse(pageCourse.getContent());
 

@@ -6,6 +6,7 @@ import com.ead.resources.assembler.courses.request.CourseRequestAssembler;
 import com.ead.resources.assembler.courses.response.CourseResponseAssembler;
 import com.ead.resources.request.courses.CourseRequest;
 import com.ead.resources.response.courses.CourseResponse;
+import com.ead.validations.ValidCourseByNameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +20,17 @@ public class UpdateCourseService {
 
     private final CourseRequestAssembler requestAssembler;
     private final CourseResponseAssembler responseAssembler;
-    
+
+    private final ValidCourseByNameService validByNameService;
+
     private final FindCourseByIdOrElseThrowService findByIdOrElseThrowService;
 
     public CourseResponse call(final UUID id, final CourseRequest request) {
         final CourseModel course = this.findByIdOrElseThrowService.call(id);
 
         this.requestAssembler.copyProperties(request, course);
+
+        this.validByNameService.callDifferentId(course.getName(), id);
 
         final CourseModel courseSaved = this.repository.save(course);
 

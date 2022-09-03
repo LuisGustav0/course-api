@@ -2,7 +2,7 @@ package com.ead.resources.courses;
 
 import com.ead.model.filter.CourseFilter;
 import com.ead.resources.response.courses.PageCourseResponse;
-import com.ead.services.courses.PageCourseService;
+import com.ead.services.courses.PageableCourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class PageCourseResource {
+public class PageableCourseResource {
 
-    private final PageCourseService service;
+    private final PageableCourseService service;
 
     @GetMapping("/courses")
     public ResponseEntity<PageCourseResponse> call(final CourseFilter filter, final Pageable pageable) {
