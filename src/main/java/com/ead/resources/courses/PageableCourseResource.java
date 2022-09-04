@@ -16,7 +16,8 @@ public class PageableCourseResource {
     private final PageableCourseService service;
 
     @GetMapping("/courses")
-    public ResponseEntity<PageCourseResponse> call(final CourseFilter filter, final Pageable pageable) {
+    public ResponseEntity<PageCourseResponse> call(final CourseFilter filter,
+                                                   final Pageable pageable) {
         final PageCourseResponse response = this.service.call(filter, pageable);
 
         return ResponseEntity.ok(response);

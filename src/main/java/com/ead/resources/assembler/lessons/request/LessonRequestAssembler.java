@@ -12,6 +12,7 @@ public class LessonRequestAssembler {
         return LessonModel.builder()
                           .title(request.getTitle())
                           .description(request.getDescription())
+                          .videoUrl(request.getVideoUrl())
                           .module(module)
                           .build();
     }

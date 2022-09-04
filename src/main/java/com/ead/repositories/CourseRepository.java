@@ -20,7 +20,7 @@ public interface CourseRepository extends JpaRepository<CourseModel, UUID>,
             "       false " +
             "END " +
             "FROM CourseModel course " +
-            "WHERE course.name like :description" +
+            "WHERE course.name like :name" +
             "   AND course.id <> :id"
     )
     boolean isExistsByNameDifferentById(final String name, final UUID id);

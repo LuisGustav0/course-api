@@ -14,6 +14,8 @@ public class ModuleResponseAssembler {
                              .id(module.getId())
                              .title(module.getTitle())
                              .description(module.getDescription())
+                             .createdAt(module.getCreatedAt())
+                             .updatedAt(module.getUpdatedAt())
                              .build();
     }
 

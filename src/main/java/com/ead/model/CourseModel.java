@@ -23,7 +23,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Set;
 import java.util.UUID;
 
@@ -61,10 +61,10 @@ public class CourseModel implements Serializable {
     private UUID userInstructorId;
 
     @CreationTimestamp
-    private LocalDateTime createdAt;
+    private OffsetDateTime createdAt;
 
     @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    private OffsetDateTime updatedAt;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
     @Fetch(FetchMode.SUBSELECT)

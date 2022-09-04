@@ -13,5 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 public class PageLessonResponse {
 
+    private int pageNumber;
+    private int pageSize;
+    private int totalPages;
+    private long totalElements;
+
     private List<LessonResponse> data;
 }

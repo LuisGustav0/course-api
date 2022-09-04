@@ -13,5 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 public class PageModuleResponse {
 
+    private int pageNumber;
+    private int pageSize;
+    private int totalPages;
+    private long totalElements;
+
     private List<ModuleResponse> data;
 }

@@ -1,7 +1,5 @@
 package com.ead.model.filter;
 
-import com.ead.enums.CourseLevelE;
-import com.ead.enums.CourseStatusE;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,11 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CourseFilter {
+public class ModuleFilter {
 
-    private String name;
-
-    private CourseStatusE statusE;
-
-    private CourseLevelE levelE;
+    private String title;
 }
