@@ -1,7 +1,7 @@
-package com.ead.resources.courses;
+package com.ead.resources;
 
 import com.ead.resources.response.courses.DeleteCourseByIdResponse;
-import com.ead.services.courses.DeleteCourseByIdService;
+import com.ead.services.DeleteCourseByIdService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

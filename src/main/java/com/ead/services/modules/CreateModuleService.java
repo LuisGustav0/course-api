@@ -7,7 +7,7 @@ import com.ead.resources.assembler.modules.request.ModuleRequestAssembler;
 import com.ead.resources.assembler.modules.response.ModuleResponseAssembler;
 import com.ead.resources.request.modules.ModuleRequest;
 import com.ead.resources.response.modules.ModuleResponse;
-import com.ead.services.courses.CourseByIdOrElseThrowService;
+import com.ead.services.CourseByIdOrElseThrowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

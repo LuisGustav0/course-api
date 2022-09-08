@@ -1,7 +1,7 @@
-package com.ead.resources.courses;
+package com.ead.resources;
 
 import com.ead.resources.response.courses.CourseResponse;
-import com.ead.services.courses.CourseByIdService;
+import com.ead.services.CourseByIdService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

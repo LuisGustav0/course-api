@@ -1,4 +1,4 @@
-package com.ead.services.courses;
+package com.ead.services;
 
 import com.ead.model.CourseModel;
 import com.ead.repositories.CourseRepository;
@@ -10,9 +10,11 @@ import com.ead.validations.ValidCourseByNameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
-public class CreateCourseService {
+public class UpdateCourseService {
 
     private final CourseRepository repository;
 
@@ -21,10 +23,14 @@ public class CreateCourseService {
 
     private final ValidCourseByNameService validByNameService;
 
-    public CourseResponse call(final CourseRequest request) {
-        this.validByNameService.call(request.getName());
+    private final CourseByIdOrElseThrowService findByIdOrElseThrowService;
 
-        final CourseModel course = this.requestAssembler.toModel(request);
+    public CourseResponse call(final UUID id, final CourseRequest request) {
+        final CourseModel course = this.findByIdOrElseThrowService.call(id);
+
+        this.requestAssembler.copyProperties(request, course);
+
+        this.validByNameService.callDifferentId(course.getName(), id);
 
         final CourseModel courseSaved = this.repository.save(course);
 

@@ -1,8 +1,8 @@
-package com.ead.resources.courses;
+package com.ead.resources;
 
 import com.ead.resources.request.courses.CourseRequest;
 import com.ead.resources.response.courses.CourseResponse;
-import com.ead.services.courses.CreateCourseService;
+import com.ead.services.CreateCourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
