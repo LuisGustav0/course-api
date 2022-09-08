@@ -19,6 +19,7 @@ import java.util.List;
 import static com.ead.services.specifications.CourseSpec.withLevelEquals;
 import static com.ead.services.specifications.CourseSpec.withNameLike;
 import static com.ead.services.specifications.CourseSpec.withStatusEquals;
+import static com.ead.services.specifications.CourseSpec.withUserUserId;
 
 @Service
 @RequiredArgsConstructor
@@ -31,12 +32,13 @@ public class PageableCourseService {
     private Specification<CourseModel> getSpecification(final CourseFilter filter) {
         return withNameLike(filter.getName())
                 .and(withStatusEquals(filter.getStatusE()))
-                .and(withLevelEquals(filter.getLevelE()));
+                .and(withLevelEquals(filter.getLevelE()))
+                .and(withUserUserId(filter.getUserId()));
     }
 
     public PageCourseResponse call(final CourseFilter filter,
                                    @PageableDefault(
-                                           sort = "id",
+                                           sort = "createdAt",
                                            direction = Sort.Direction.DESC
                                    ) final Pageable pageable) {
         final Specification<CourseModel> spec = getSpecification(filter);

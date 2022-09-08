@@ -37,7 +37,7 @@ public class PageLessonService {
     public PageLessonResponse call(final UUID moduleId,
                                    final LessonFilter filter,
                                    @PageableDefault(
-                                           sort = "id",
+                                           sort = "createdAt",
                                            direction = Sort.Direction.DESC
                                    ) final Pageable pageable) {
         final Specification<LessonModel> spec = getSpecification(moduleId, filter);

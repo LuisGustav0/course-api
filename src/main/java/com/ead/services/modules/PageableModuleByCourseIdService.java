@@ -36,7 +36,7 @@ public class PageableModuleByCourseIdService {
     public PageModuleResponse call(final UUID courseId,
                                    final ModuleFilter filter,
                                    @PageableDefault(
-                                           sort = "id",
+                                           sort = "createdAt",
                                            direction = Sort.Direction.DESC
                                    ) final Pageable pageable) {
         final Specification<ModuleModel> spec = getSpecification(courseId, filter);
