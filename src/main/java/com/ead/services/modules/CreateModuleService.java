@@ -7,7 +7,7 @@ import com.ead.resources.assembler.modules.request.ModuleRequestAssembler;
 import com.ead.resources.assembler.modules.response.ModuleResponseAssembler;
 import com.ead.resources.request.modules.ModuleRequest;
 import com.ead.resources.response.modules.ModuleResponse;
-import com.ead.services.courses.FindCourseByIdOrElseThrowService;
+import com.ead.services.courses.CourseByIdOrElseThrowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ public class CreateModuleService {
     private final ModuleRequestAssembler requestAssembler;
     private final ModuleResponseAssembler responseAssembler;
 
-    private final FindCourseByIdOrElseThrowService findByIdOrElseThrowService;
+    private final CourseByIdOrElseThrowService findByIdOrElseThrowService;
 
     public ModuleResponse call(final UUID courseId,
                                final ModuleRequest request) {

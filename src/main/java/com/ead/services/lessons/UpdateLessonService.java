@@ -20,7 +20,7 @@ public class UpdateLessonService {
     private final LessonRequestAssembler requestAssembler;
     private final LessonResponseAssembler responseAssembler;
 
-    private final FindLessonByIdAndModuleIdOrElseThrowService findByIdAndModuleIdService;
+    private final LessonByIdAndModuleIdOrElseThrowService findByIdAndModuleIdService;
 
     public LessonResponse call(final UUID id,
                                final UUID moduleId,

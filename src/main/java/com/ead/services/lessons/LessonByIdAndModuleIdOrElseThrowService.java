@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class FindLessonByIdAndModuleIdOrElseThrowService {
+public class LessonByIdAndModuleIdOrElseThrowService {
 
     private final LessonRepository repository;
 

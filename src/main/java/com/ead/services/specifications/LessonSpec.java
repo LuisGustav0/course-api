@@ -1,6 +1,5 @@
 package com.ead.services.specifications;
 
-import com.ead.model.CourseModel;
 import com.ead.model.LessonModel;
 import com.ead.model.ModuleModel;
 import org.apache.commons.lang3.StringUtils;

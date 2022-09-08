@@ -16,7 +16,7 @@ public class DeleteCourseByIdService {
 
     private final CourseRepository repository;
 
-    private final FindCourseByIdOrElseThrowService findByIdOrElseThrowService;
+    private final CourseByIdOrElseThrowService findByIdOrElseThrowService;
     private final DeleteAllModuleByCourseIdService deleteAllModuleByCourseIdService;
 
     @Transactional

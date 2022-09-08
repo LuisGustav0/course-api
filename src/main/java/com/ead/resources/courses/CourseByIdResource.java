@@ -1,7 +1,7 @@
 package com.ead.resources.courses;
 
 import com.ead.resources.response.courses.CourseResponse;
-import com.ead.services.courses.FindCourseByIdService;
+import com.ead.services.courses.CourseByIdService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +12,9 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-public class FindCourseByIdResource {
+public class CourseByIdResource {
 
-    private final FindCourseByIdService service;
+    private final CourseByIdService service;
 
     @GetMapping("/courses/{id}")
     public ResponseEntity<CourseResponse> call(@PathVariable UUID id) {

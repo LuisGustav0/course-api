@@ -20,7 +20,7 @@ public class UpdateModuleService {
     private final ModuleRequestAssembler requestAssembler;
     private final ModuleResponseAssembler responseAssembler;
 
-    private final FindModuleByIdAndCourseIdOrElseThrowService findByIdAndCourseIdOrElseThrowService;
+    private final ModuleByIdAndCourseIdOrElseThrowService findByIdAndCourseIdOrElseThrowService;
 
     public ModuleResponse call(final UUID id,
                                final UUID courseId,

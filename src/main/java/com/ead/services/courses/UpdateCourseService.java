@@ -23,7 +23,7 @@ public class UpdateCourseService {
 
     private final ValidCourseByNameService validByNameService;
 
-    private final FindCourseByIdOrElseThrowService findByIdOrElseThrowService;
+    private final CourseByIdOrElseThrowService findByIdOrElseThrowService;
 
     public CourseResponse call(final UUID id, final CourseRequest request) {
         final CourseModel course = this.findByIdOrElseThrowService.call(id);

@@ -1,9 +1,7 @@
 package com.ead.services.lessons;
 
 import com.ead.model.LessonModel;
-import com.ead.model.ModuleModel;
 import com.ead.repositories.LessonRepository;
-import com.ead.services.modules.FindAllModuleByCourseIdService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

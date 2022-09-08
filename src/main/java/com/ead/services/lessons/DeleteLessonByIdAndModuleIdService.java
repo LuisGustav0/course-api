@@ -14,7 +14,7 @@ public class DeleteLessonByIdAndModuleIdService {
 
     private final LessonRepository repository;
 
-    private final FindLessonByIdAndModuleIdOrElseThrowService findByIdAndModuleIdService;
+    private final LessonByIdAndModuleIdOrElseThrowService findByIdAndModuleIdService;
 
     public DeleteLessonResponse call(final UUID id, final UUID moduleId) {
         final LessonModel lesson = findByIdAndModuleIdService.call(id, moduleId);

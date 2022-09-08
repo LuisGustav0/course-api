@@ -15,7 +15,7 @@ public class DeleteAllModuleByCourseIdService {
 
     private final ModuleRepository repository;
 
-    private final FindAllModuleByCourseIdService findAllModuleByCourseIdService;
+    private final AllModuleByCourseIdService findAllModuleByCourseIdService;
     private final DeleteAllLessonByModuleIdService deleteAllLessonByModuleIdService;
 
     public void call(final UUID courseId) {

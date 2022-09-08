@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class FindCourseByIdOrElseThrowService {
+public class CourseByIdOrElseThrowService {
 
     private final CourseRepository repository;
 

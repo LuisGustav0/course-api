@@ -60,13 +60,16 @@ public class CourseModel implements Serializable {
     @Column(nullable = false)
     private UUID userInstructorId;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
+    @Fetch(FetchMode.SUBSELECT)
+    private Set<ModuleModel> listModules;
+
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    private Set<CourseUserModel> listUser;
+
     @CreationTimestamp
     private OffsetDateTime createdAt;
 
     @UpdateTimestamp
     private OffsetDateTime updatedAt;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
-    @Fetch(FetchMode.SUBSELECT)
-    private Set<ModuleModel> listModules;
 }

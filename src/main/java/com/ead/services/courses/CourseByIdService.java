@@ -10,10 +10,10 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class FindCourseByIdService {
+public class CourseByIdService {
 
     private final CourseResponseAssembler assembler;
-    private final FindCourseByIdOrElseThrowService findByIdOrElseThrowService;
+    private final CourseByIdOrElseThrowService findByIdOrElseThrowService;
 
     public CourseResponse call(final UUID id) {
         final CourseModel course = this.findByIdOrElseThrowService.call(id);

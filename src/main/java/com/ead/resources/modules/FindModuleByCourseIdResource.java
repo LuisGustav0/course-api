@@ -1,7 +1,7 @@
 package com.ead.resources.modules;
 
 import com.ead.resources.response.modules.ModuleResponse;
-import com.ead.services.modules.FindModuleByCourseIdService;
+import com.ead.services.modules.ModuleByCourseIdService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class FindModuleByCourseIdResource {
 
-    private final FindModuleByCourseIdService service;
+    private final ModuleByCourseIdService service;
 
     @GetMapping("/courses/{courseId}/modules/{id}")
     public ResponseEntity<ModuleResponse> call(@PathVariable UUID id,
