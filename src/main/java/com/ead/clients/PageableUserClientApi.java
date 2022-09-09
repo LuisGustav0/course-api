@@ -27,7 +27,7 @@ public class PageableUserClientApi {
     @Value("${ead.api.url.auth-user}")
     private static String REQUEST_URI;
 
-    @Value("${ead.api.url.auth-user.path-users}")
+    @Value("${ead.api.path.users}")
     private static String PATH_USERS;
 
     private String getUrlTemplate() {

@@ -12,7 +12,7 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserSubscriptionInCourseRequest {
+public class SubscriptionUserInCourseRequest {
 
     @NotNull
     private UUID userId;
