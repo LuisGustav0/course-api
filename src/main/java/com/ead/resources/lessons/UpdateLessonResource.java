@@ -1,7 +1,7 @@
 package com.ead.resources.lessons;
 
-import com.ead.resources.request.lessons.LessonRequest;
-import com.ead.resources.response.lessons.LessonResponse;
+import com.ead.model.request.lessons.LessonRequest;
+import com.ead.model.response.lessons.LessonResponse;
 import com.ead.services.lessons.UpdateLessonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

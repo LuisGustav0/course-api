@@ -4,6 +4,7 @@ import com.ead.enums.ErrorType;
 import com.ead.exceptions.CourseNotFoundException;
 import com.ead.exceptions.LessonNotFoundException;
 import com.ead.exceptions.ModuleNotFoundException;
+import com.ead.exceptions.SubscriptionCourseAndUserExistsException;
 import com.ead.factory.HttpErrorResponseFactory;
 import com.ead.model.http.HttpErrorResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -70,6 +71,15 @@ public class HttpExceptionHandler extends ResponseEntityExceptionHandler {
 
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
+                .body(HttpErrorResponseFactory.build(ex.getErrorCode(), ex.getMessage()));
+    }
+
+    @ExceptionHandler(SubscriptionCourseAndUserExistsException.class)
+    public ResponseEntity<HttpErrorResponse> handleSubscriptionCourseAndUserExistsException(SubscriptionCourseAndUserExistsException ex) {
+        logger.error(ex.getMessage());
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
                 .body(HttpErrorResponseFactory.build(ex.getErrorCode(), ex.getMessage()));
     }
 }

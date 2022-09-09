@@ -2,7 +2,7 @@ package com.ead.services.modules;
 
 import com.ead.model.ModuleModel;
 import com.ead.repositories.ModuleRepository;
-import com.ead.resources.response.modules.DeleteModuleByIdResponse;
+import com.ead.model.response.modules.DeleteModuleByIdResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

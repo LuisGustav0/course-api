@@ -3,9 +3,9 @@ package com.ead.services;
 import com.ead.model.CourseModel;
 import com.ead.model.filter.CourseFilter;
 import com.ead.repositories.CourseRepository;
-import com.ead.assembler.courses.response.CourseResponseAssembler;
-import com.ead.resources.response.CourseResponse;
-import com.ead.resources.response.PageCourseResponse;
+import com.ead.assembler.courses.CourseResponseAssembler;
+import com.ead.model.response.CourseResponse;
+import com.ead.model.response.PageCourseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,10 +16,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.ead.services.specifications.CourseSpec.withLevelEquals;
-import static com.ead.services.specifications.CourseSpec.withNameLike;
-import static com.ead.services.specifications.CourseSpec.withStatusEquals;
-import static com.ead.services.specifications.CourseSpec.withUserUserId;
+import static com.ead.specifications.CourseSpec.withLevelEquals;
+import static com.ead.specifications.CourseSpec.withNameLike;
+import static com.ead.specifications.CourseSpec.withStatusEquals;
+import static com.ead.specifications.CourseSpec.withUserUserId;
 
 @Service
 @RequiredArgsConstructor

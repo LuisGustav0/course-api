@@ -1,8 +1,8 @@
 package com.ead.services;
 
 import com.ead.model.CourseModel;
-import com.ead.assembler.courses.response.CourseResponseAssembler;
-import com.ead.resources.response.CourseResponse;
+import com.ead.assembler.courses.CourseResponseAssembler;
+import com.ead.model.response.CourseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

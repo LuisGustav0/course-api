@@ -1,6 +1,6 @@
 package com.ead.resources.modules;
 
-import com.ead.resources.response.modules.DeleteModuleByIdResponse;
+import com.ead.model.response.modules.DeleteModuleByIdResponse;
 import com.ead.services.modules.DeleteModuleByIdService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -2,7 +2,7 @@ package com.ead.services.lessons;
 
 import com.ead.model.LessonModel;
 import com.ead.repositories.LessonRepository;
-import com.ead.resources.response.lessons.DeleteLessonResponse;
+import com.ead.model.response.lessons.DeleteLessonResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

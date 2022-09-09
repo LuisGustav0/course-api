@@ -1,7 +1,7 @@
 package com.ead.resources.modules;
 
-import com.ead.resources.request.modules.ModuleRequest;
-import com.ead.resources.response.modules.ModuleResponse;
+import com.ead.model.request.modules.ModuleRequest;
+import com.ead.model.response.modules.ModuleResponse;
 import com.ead.services.modules.UpdateModuleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

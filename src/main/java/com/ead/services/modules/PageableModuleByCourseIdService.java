@@ -3,9 +3,9 @@ package com.ead.services.modules;
 import com.ead.model.ModuleModel;
 import com.ead.model.filter.ModuleFilter;
 import com.ead.repositories.ModuleRepository;
-import com.ead.assembler.modules.response.ModuleResponseAssembler;
-import com.ead.resources.response.modules.ModuleResponse;
-import com.ead.resources.response.modules.PageModuleResponse;
+import com.ead.assembler.modules.ModuleResponseAssembler;
+import com.ead.model.response.modules.ModuleResponse;
+import com.ead.model.response.modules.PageModuleResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
-import static com.ead.services.specifications.ModuleSpec.withByCourseId;
-import static com.ead.services.specifications.ModuleSpec.withTitleLike;
+import static com.ead.specifications.ModuleSpec.withByCourseId;
+import static com.ead.specifications.ModuleSpec.withTitleLike;
 
 @Service
 @RequiredArgsConstructor

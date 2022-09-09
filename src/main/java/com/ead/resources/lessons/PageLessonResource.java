@@ -1,7 +1,7 @@
 package com.ead.resources.lessons;
 
 import com.ead.model.filter.LessonFilter;
-import com.ead.resources.response.lessons.PageLessonResponse;
+import com.ead.model.response.lessons.PageLessonResponse;
 import com.ead.services.lessons.PageLessonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

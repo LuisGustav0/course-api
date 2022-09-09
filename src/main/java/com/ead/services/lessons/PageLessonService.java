@@ -3,9 +3,9 @@ package com.ead.services.lessons;
 import com.ead.model.LessonModel;
 import com.ead.model.filter.LessonFilter;
 import com.ead.repositories.LessonRepository;
-import com.ead.assembler.lessons.response.LessonResponseAssembler;
-import com.ead.resources.response.lessons.LessonResponse;
-import com.ead.resources.response.lessons.PageLessonResponse;
+import com.ead.assembler.lessons.LessonResponseAssembler;
+import com.ead.model.response.lessons.LessonResponse;
+import com.ead.model.response.lessons.PageLessonResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,8 +17,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
-import static com.ead.services.specifications.LessonSpec.withByModuleId;
-import static com.ead.services.specifications.LessonSpec.withTitleLike;
+import static com.ead.specifications.LessonSpec.withByModuleId;
+import static com.ead.specifications.LessonSpec.withTitleLike;
 
 
 @Service

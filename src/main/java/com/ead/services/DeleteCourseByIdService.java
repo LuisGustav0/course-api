@@ -2,7 +2,7 @@ package com.ead.services;
 
 import com.ead.model.CourseModel;
 import com.ead.repositories.CourseRepository;
-import com.ead.resources.response.DeleteCourseByIdResponse;
+import com.ead.model.response.DeleteCourseByIdResponse;
 import com.ead.services.modules.DeleteAllModuleByCourseIdService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

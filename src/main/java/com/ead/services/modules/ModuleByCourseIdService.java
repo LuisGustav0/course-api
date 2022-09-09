@@ -1,8 +1,8 @@
 package com.ead.services.modules;
 
 import com.ead.model.ModuleModel;
-import com.ead.assembler.modules.response.ModuleResponseAssembler;
-import com.ead.resources.response.modules.ModuleResponse;
+import com.ead.assembler.modules.ModuleResponseAssembler;
+import com.ead.model.response.modules.ModuleResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
