@@ -14,6 +14,7 @@ import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Log4j2
@@ -37,7 +38,7 @@ public class UserByIdOrElseThrowClientApi {
                                    .toUriString();
     }
 
-    public UserResponse call(final UUID userId) {
+    public Optional<UserResponse> call(final UUID userId) {
         try {
             final String url = this.getUrlTemplate(userId);
 
@@ -46,7 +47,7 @@ public class UserByIdOrElseThrowClientApi {
             final ResponseEntity<UserResponse> response =
                     this.restTemplate.exchange(url, HttpMethod.GET, null, UserResponse.class);
 
-            return response.getBody();
+            return Optional.of(response).map(ResponseEntity::getBody);
         } catch (HttpStatusCodeException ex) {
             log.error("UserByIdOrElseThrowClientApi.call Error", ex);
 
@@ -58,6 +59,6 @@ public class UserByIdOrElseThrowClientApi {
             throw new ServiceAuthUserUnavailableException(ex);
         }
 
-        return null;
+        return Optional.empty();
     }
 }

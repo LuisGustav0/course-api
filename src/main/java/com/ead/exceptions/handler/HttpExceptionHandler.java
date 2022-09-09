@@ -8,11 +8,11 @@ import com.ead.exceptions.ServiceAuthUserUnavailableException;
 import com.ead.exceptions.SubscriptionCourseAndUserExistsException;
 import com.ead.exceptions.UnexpectedErrorException;
 import com.ead.exceptions.UserBlockedException;
+import com.ead.exceptions.UserMustBeInstructorOrAdminException;
 import com.ead.exceptions.UserNotFoundException;
 import com.ead.factory.HttpErrorResponseFactory;
 import com.ead.model.http.HttpErrorResponse;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Log4j2
@@ -118,6 +117,15 @@ public class HttpExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(UserBlockedException.class)
     public ResponseEntity<HttpErrorResponse> handleUserBlockedException(UserBlockedException ex) {
+        logger.error(ex.getMessage());
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(HttpErrorResponseFactory.build(ex.getErrorCode(), ex.getMessage()));
+    }
+
+    @ExceptionHandler(UserMustBeInstructorOrAdminException.class)
+    public ResponseEntity<HttpErrorResponse> handleUserMustBeInstructorOrAdminException(UserMustBeInstructorOrAdminException ex) {
         logger.error(ex.getMessage());
 
         return ResponseEntity

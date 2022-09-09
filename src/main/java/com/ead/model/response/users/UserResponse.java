@@ -36,4 +36,9 @@ public class UserResponse {
     public boolean isBlocked() {
         return UserStatusE.BLOCKED.equals(statusE);
     }
+
+    @JsonIgnore
+    public boolean isTypeDifferentInstructor() {
+        return !UserTypeE.INSTRUCTOR.equals(typeE);
+    }
 }

@@ -16,10 +16,8 @@ public class UserByIdOrElseThrowService {
     private final UserByIdOrElseThrowClientApi userByIdOrElseThrowClientApi;
 
     public UserResponse call(final UUID userId) {
-        final UserResponse user = this.userByIdOrElseThrowClientApi.call(userId);
-
-        if (user == null)
-            throw new UserNotFoundException();
+        final UserResponse user = this.userByIdOrElseThrowClientApi.call(userId)
+                .orElseThrow(UserNotFoundException::new);
 
         if (user.isBlocked())
             throw new UserBlockedException();
