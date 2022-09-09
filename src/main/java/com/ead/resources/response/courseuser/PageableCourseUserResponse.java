@@ -1,5 +1,6 @@
-package com.ead.resources.response.courses;
+package com.ead.resources.response.courseuser;
 
+import com.ead.resources.response.users.UserResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,12 +12,12 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PageCourseResponse {
+public class PageableCourseUserResponse {
 
     private int pageNumber;
     private int pageSize;
     private int totalPages;
     private long totalElements;
 
-    private List<CourseResponse> data;
+    private List<UserResponse> data;
 }

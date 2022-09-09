@@ -2,10 +2,10 @@ package com.ead.services;
 
 import com.ead.model.CourseModel;
 import com.ead.repositories.CourseRepository;
-import com.ead.resources.assembler.courses.request.CourseRequestAssembler;
-import com.ead.resources.assembler.courses.response.CourseResponseAssembler;
+import com.ead.assembler.courses.request.CourseRequestAssembler;
+import com.ead.assembler.courses.response.CourseResponseAssembler;
 import com.ead.resources.request.courses.CourseRequest;
-import com.ead.resources.response.courses.CourseResponse;
+import com.ead.resources.response.CourseResponse;
 import com.ead.validations.ValidCourseByNameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

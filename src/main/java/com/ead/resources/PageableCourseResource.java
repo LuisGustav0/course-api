@@ -1,7 +1,7 @@
 package com.ead.resources;
 
 import com.ead.model.filter.CourseFilter;
-import com.ead.resources.response.courses.PageCourseResponse;
+import com.ead.resources.response.PageCourseResponse;
 import com.ead.services.PageableCourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

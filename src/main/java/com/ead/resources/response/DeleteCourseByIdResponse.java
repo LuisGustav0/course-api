@@ -1,4 +1,4 @@
-package com.ead.resources.response.courses;
+package com.ead.resources.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

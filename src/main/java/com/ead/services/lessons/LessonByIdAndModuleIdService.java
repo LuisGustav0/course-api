@@ -1,7 +1,7 @@
 package com.ead.services.lessons;
 
 import com.ead.model.LessonModel;
-import com.ead.resources.assembler.lessons.response.LessonResponseAssembler;
+import com.ead.assembler.lessons.response.LessonResponseAssembler;
 import com.ead.resources.response.lessons.LessonResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

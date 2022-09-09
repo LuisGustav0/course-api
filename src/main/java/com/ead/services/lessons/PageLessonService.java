@@ -3,7 +3,7 @@ package com.ead.services.lessons;
 import com.ead.model.LessonModel;
 import com.ead.model.filter.LessonFilter;
 import com.ead.repositories.LessonRepository;
-import com.ead.resources.assembler.lessons.response.LessonResponseAssembler;
+import com.ead.assembler.lessons.response.LessonResponseAssembler;
 import com.ead.resources.response.lessons.LessonResponse;
 import com.ead.resources.response.lessons.PageLessonResponse;
 import lombok.RequiredArgsConstructor;

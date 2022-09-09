@@ -1,4 +1,4 @@
-package com.ead.resources.assembler.modules.response;
+package com.ead.assembler.modules.response;
 
 import com.ead.model.ModuleModel;
 import com.ead.resources.response.modules.ModuleResponse;

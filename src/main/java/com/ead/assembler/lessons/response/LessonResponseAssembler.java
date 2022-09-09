@@ -1,4 +1,4 @@
-package com.ead.resources.assembler.lessons.response;
+package com.ead.assembler.lessons.response;
 
 import com.ead.model.LessonModel;
 import com.ead.resources.response.lessons.LessonResponse;

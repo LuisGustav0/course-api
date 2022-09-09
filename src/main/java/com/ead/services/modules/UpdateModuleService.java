@@ -2,8 +2,8 @@ package com.ead.services.modules;
 
 import com.ead.model.ModuleModel;
 import com.ead.repositories.ModuleRepository;
-import com.ead.resources.assembler.modules.request.ModuleRequestAssembler;
-import com.ead.resources.assembler.modules.response.ModuleResponseAssembler;
+import com.ead.assembler.modules.request.ModuleRequestAssembler;
+import com.ead.assembler.modules.response.ModuleResponseAssembler;
 import com.ead.resources.request.modules.ModuleRequest;
 import com.ead.resources.response.modules.ModuleResponse;
 import lombok.RequiredArgsConstructor;

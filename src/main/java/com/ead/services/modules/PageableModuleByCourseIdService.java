@@ -3,7 +3,7 @@ package com.ead.services.modules;
 import com.ead.model.ModuleModel;
 import com.ead.model.filter.ModuleFilter;
 import com.ead.repositories.ModuleRepository;
-import com.ead.resources.assembler.modules.response.ModuleResponseAssembler;
+import com.ead.assembler.modules.response.ModuleResponseAssembler;
 import com.ead.resources.response.modules.ModuleResponse;
 import com.ead.resources.response.modules.PageModuleResponse;
 import lombok.RequiredArgsConstructor;

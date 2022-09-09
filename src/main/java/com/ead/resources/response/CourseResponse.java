@@ -1,4 +1,4 @@
-package com.ead.resources.response.courses;
+package com.ead.resources.response;
 
 import com.ead.enums.CourseLevelE;
 import com.ead.enums.CourseStatusE;
@@ -24,6 +24,5 @@ public class CourseResponse {
     private UUID userInstructorId;
 
     private OffsetDateTime createdAt;
-
     private OffsetDateTime updatedAt;
 }

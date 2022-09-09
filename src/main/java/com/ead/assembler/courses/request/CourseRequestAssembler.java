@@ -1,4 +1,4 @@
-package com.ead.resources.assembler.courses.request;
+package com.ead.assembler.courses.request;
 
 import com.ead.model.CourseModel;
 import com.ead.resources.request.courses.CourseRequest;

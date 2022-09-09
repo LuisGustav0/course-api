@@ -1,7 +1,7 @@
-package com.ead.resources.assembler.courses.response;
+package com.ead.assembler.courses.response;
 
 import com.ead.model.CourseModel;
-import com.ead.resources.response.courses.CourseResponse;
+import com.ead.resources.response.CourseResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
