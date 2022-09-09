@@ -1,4 +1,4 @@
-package com.ead.clients;
+package com.ead.clients.authuserapi;
 
 import com.ead.model.response.courseuser.PageableUserResponse;
 import lombok.RequiredArgsConstructor;
@@ -66,10 +66,10 @@ public class PageableUserClientApi {
             final ParameterizedTypeReference<PageableUserResponse> responseType =
                     new ParameterizedTypeReference<>() {};
 
-            final ResponseEntity<PageableUserResponse> pageableResult =
+            final ResponseEntity<PageableUserResponse> responseEntity =
                     this.restTemplate.exchange(url, HttpMethod.GET, null, responseType, params);
 
-            return pageableResult.getBody();
+            return responseEntity.getBody();
         } catch (HttpStatusCodeException ex) {
             log.error("GET PageableUserClientApi.call URL: {}", url);
         }

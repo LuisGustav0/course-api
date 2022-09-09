@@ -4,9 +4,14 @@ import com.ead.enums.ErrorType;
 import com.ead.exceptions.CourseNotFoundException;
 import com.ead.exceptions.LessonNotFoundException;
 import com.ead.exceptions.ModuleNotFoundException;
+import com.ead.exceptions.ServiceAuthUserUnavailableException;
 import com.ead.exceptions.SubscriptionCourseAndUserExistsException;
+import com.ead.exceptions.UnexpectedErrorException;
+import com.ead.exceptions.UserBlockedException;
+import com.ead.exceptions.UserNotFoundException;
 import com.ead.factory.HttpErrorResponseFactory;
 import com.ead.model.http.HttpErrorResponse;
+import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,9 +24,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@Slf4j
+@Log4j2
 @ControllerAdvice
 public class HttpExceptionHandler extends ResponseEntityExceptionHandler {
 
@@ -45,6 +51,24 @@ public class HttpExceptionHandler extends ResponseEntityExceptionHandler {
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(httpErrorResponse);
+    }
+
+    @ExceptionHandler(UnexpectedErrorException.class)
+    public ResponseEntity<HttpErrorResponse> handleUnexpectedErrorException(UnexpectedErrorException e) {
+        log.error(e.getMessage());
+
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(HttpErrorResponseFactory.build(e.getErrorCode(), e.getMessage()));
+    }
+
+    @ExceptionHandler(ServiceAuthUserUnavailableException.class)
+    public ResponseEntity<HttpErrorResponse> handleServiceAuthUserUnavailableException(ServiceAuthUserUnavailableException e) {
+        log.error(e.getMessage());
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(HttpErrorResponseFactory.build(e.getErrorCode(), e.getMessage()));
     }
 
     @ExceptionHandler(CourseNotFoundException.class)
@@ -76,6 +100,24 @@ public class HttpExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(SubscriptionCourseAndUserExistsException.class)
     public ResponseEntity<HttpErrorResponse> handleSubscriptionCourseAndUserExistsException(SubscriptionCourseAndUserExistsException ex) {
+        logger.error(ex.getMessage());
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(HttpErrorResponseFactory.build(ex.getErrorCode(), ex.getMessage()));
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<HttpErrorResponse> handleUserNotFoundException(UserNotFoundException ex) {
+        logger.error(ex.getMessage());
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(HttpErrorResponseFactory.build(ex.getErrorCode(), ex.getMessage()));
+    }
+
+    @ExceptionHandler(UserBlockedException.class)
+    public ResponseEntity<HttpErrorResponse> handleUserBlockedException(UserBlockedException ex) {
         logger.error(ex.getMessage());
 
         return ResponseEntity

@@ -1,6 +1,6 @@
 package com.ead.services.courseuser;
 
-import com.ead.clients.PageableUserClientApi;
+import com.ead.clients.authuserapi.PageableUserClientApi;
 import com.ead.assembler.courseuser.PageableUserResponseAssembler;
 import com.ead.model.response.courseuser.PageableCourseUserResponse;
 import com.ead.model.response.courseuser.PageableUserResponse;
