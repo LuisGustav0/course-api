@@ -4,14 +4,14 @@ public enum ErrorType {
 
     METHOD_ARG_NOT_VALID_ERROR("Argumento ou valor(es) inválido(s)."),
     UNEXPECTED_ERROR("Um erro inesperado ocorreu, por favor, verifique os logs."),
-    SERVICE_UNAVAILABLE("O serviço do auth user está indisponível no momento, tente novamente mais tarde."),
+    SERVICE_UNAVAILABLE("O serviço da api de auth user está indisponível no momento, tente novamente mais tarde."),
     COURSE_NOT_FOUND("Curso não encontrado."),
     MODULE_NOT_FOUND("Modulo do curso não encontrado."),
     LESSON_NOT_FOUND("Lição do modulo não encontrado."),
     COURSE_NAME_EXISTS_BY_NAME_ERROR("Nome do curso já cadastrado."),
     USER_NOT_FOUND("Usuário não encontrado."),
     USER_BLOCKED("Usuário esta bloqueado."),
-    SUBSCRIPTION_COURSE_AND_USER_EXISTS_ERROR("Inscrição de usuário nesse curso ja existe.");
+    SUBSCRIPTION_COURSE_AND_USER_EXISTS_ERROR("Inscrição do usuário ja existe nesse curso.");
 
     private String error;
 

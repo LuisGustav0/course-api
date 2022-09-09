@@ -9,7 +9,7 @@ import com.ead.model.response.users.UserResponse;
 import com.ead.repositories.CourseUserRepository;
 import com.ead.services.CourseByIdOrElseThrowService;
 import com.ead.services.users.UserByIdOrElseThrowService;
-import com.ead.validations.ValidExistsCourseIdAndUserIdService;
+import com.ead.validations.ExistsCourseIdAndUserIdService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,15 +24,14 @@ public class SubscriptionUserInCourseService {
     private final CourseUserModelAssembler assembler;
 
     private final UserByIdOrElseThrowService userByIdOrElseThrowService;
-
+    private final ExistsCourseIdAndUserIdService existsCourseIdAndUserIdService;
     private final CourseByIdOrElseThrowService findCourseByIdOrElseThrowService;
-    private final ValidExistsCourseIdAndUserIdService validExistsCourseIdAndUserIdService;
 
     public SubscriptionUserInCourseResponse call(final UUID courseId,
                                                  final SubscriptionUserInCourseRequest request) {
         final CourseModel course = this.findCourseByIdOrElseThrowService.call(courseId);
 
-        this.validExistsCourseIdAndUserIdService.call(course.getId(), request.getUserId());
+        this.existsCourseIdAndUserIdService.call(course.getId(), request.getUserId());
 
         final UserResponse user = this.userByIdOrElseThrowService.call(request.getUserId());
 

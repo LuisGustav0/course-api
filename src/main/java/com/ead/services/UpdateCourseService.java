@@ -6,7 +6,7 @@ import com.ead.assembler.courses.CourseRequestAssembler;
 import com.ead.assembler.courses.CourseResponseAssembler;
 import com.ead.model.request.CourseRequest;
 import com.ead.model.response.CourseResponse;
-import com.ead.validations.ValidCourseByNameService;
+import com.ead.validations.ExistsCourseByNameService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ public class UpdateCourseService {
     private final CourseRequestAssembler requestAssembler;
     private final CourseResponseAssembler responseAssembler;
 
-    private final ValidCourseByNameService validByNameService;
+    private final ExistsCourseByNameService validByNameService;
 
     private final CourseByIdOrElseThrowService findByIdOrElseThrowService;
 

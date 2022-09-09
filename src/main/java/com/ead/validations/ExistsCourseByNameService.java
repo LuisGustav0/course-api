@@ -9,7 +9,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class ValidCourseByNameService {
+public class ExistsCourseByNameService {
 
     private final CourseRepository repository;
 
