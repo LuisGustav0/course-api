@@ -1,4 +1,4 @@
-package com.ead.model.response.courseuser;
+package com.ead.model.response.usercourse;
 
 import com.ead.model.response.CourseResponse;
 import com.ead.model.response.users.UserResponse;
@@ -13,9 +13,9 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SubscriptionUserInCourseResponse {
+public class SubscriptionUserInCurseResponse {
 
     private UUID id;
-    private CourseResponse course;
     private UserResponse user;
+    private CourseResponse course;
 }

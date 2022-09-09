@@ -2,12 +2,11 @@ package com.ead.clients.authuserapi;
 
 import com.ead.exceptions.ServiceAuthUserUnavailableException;
 import com.ead.exceptions.UnexpectedErrorException;
-import com.ead.model.response.users.UserResponse;
+import com.ead.model.request.usercourse.SubscriptionUserInCourseRequest;
+import com.ead.model.response.usercourse.SubscriptionUserInCurseResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpStatusCodeException;
@@ -19,7 +18,7 @@ import java.util.UUID;
 @Log4j2
 @Component
 @RequiredArgsConstructor
-public class UserByIdOrElseThrowClientApi {
+public class SubscriptionUserInCourseClientApi {
 
     private final RestTemplate restTemplate;
 
@@ -29,35 +28,31 @@ public class UserByIdOrElseThrowClientApi {
     @Value("${ead.api.path.users}")
     private String PATH_USERS;
 
+    @Value("${ead.api.path.courses-subscription}")
+    private String PATH_COURSES_SUBSCRIPTION;
+
     private String getUrlTemplate(final UUID userId) {
         return UriComponentsBuilder.fromHttpUrl(REQUEST_URI)
                                    .path(PATH_USERS)
                                    .path("/" + userId)
+                                   .path(PATH_COURSES_SUBSCRIPTION)
                                    .encode()
                                    .toUriString();
     }
 
-    public UserResponse call(final UUID userId) {
+    public SubscriptionUserInCurseResponse call(final UUID userId, final UUID courseId) {
         try {
             final String url = this.getUrlTemplate(userId);
+            final var request = new SubscriptionUserInCourseRequest(courseId);
 
-            log.error("UserByIdOrElseThrowClientApi.call URL: {}", url);
+            ResponseEntity<SubscriptionUserInCurseResponse> responseEntity =
+                    this.restTemplate.postForEntity(url, request, SubscriptionUserInCurseResponse.class);
 
-            final ResponseEntity<UserResponse> response =
-                    this.restTemplate.exchange(url, HttpMethod.GET, null, UserResponse.class);
-
-            return response.getBody();
+            return responseEntity.getBody();
         } catch (HttpStatusCodeException ex) {
-            log.error("UserByIdOrElseThrowClientApi.call Error", ex);
-
-            if (!ex.getStatusCode().equals(HttpStatus.NOT_FOUND))
-                throw new UnexpectedErrorException(ex);
+            throw new UnexpectedErrorException(ex);
         } catch (Exception ex) {
-            log.error("UserByIdOrElseThrowClientApi.call Error", ex);
-
             throw new ServiceAuthUserUnavailableException(ex);
         }
-
-        return null;
     }
 }

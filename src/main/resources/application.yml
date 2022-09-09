@@ -27,3 +27,4 @@ ead:
       auth-user: http://localhost:8087
     path:
       users: /users
+      courses-subscription: /courses/subscription
