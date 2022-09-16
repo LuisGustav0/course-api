@@ -1,7 +1,11 @@
 server:
   port: 8082
+  servlet:
+    context-path: '/ead-course/'
 
 spring:
+  application:
+    name: ead-course-api
   # Banco de dados
   datasource:
     url: jdbc:postgresql://localhost:5432/db_ead_course
@@ -13,6 +17,7 @@ spring:
     properties:
       hibernate:
         show_sql: true
+
 # Log
 logging:
   level:
@@ -21,10 +26,19 @@ logging:
     org.springframework.web: DEBUG
     org.hibernate: INFO
 
+# Eureka server
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+
+# Properties
 ead:
   api:
     url:
-      auth-user: http://localhost:8087
+      auth-user: http://ead-course-api/ead-course
     path:
       users: /users
       courses-subscription: /courses/subscription

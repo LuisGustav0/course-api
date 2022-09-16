@@ -14,12 +14,14 @@ public class DeleteAllCourseUserByCourseIdService {
 
     private final CourseUserRepository repository;
 
-    public void call(final UUID courseId) {
+    public boolean call(final UUID courseId) {
         final List<CourseUserModel> listCourseUser = this.repository.findAllByCourseId(courseId);
 
         if (listCourseUser.isEmpty())
-            return;
+            return false;
 
         this.repository.deleteAll(listCourseUser);
+
+        return true;
     }
 }

@@ -18,16 +18,18 @@ public class DeleteAllModuleByCourseIdService {
     private final AllModuleByCourseIdService findAllModuleByCourseIdService;
     private final DeleteAllLessonByModuleIdService deleteAllLessonByModuleIdService;
 
-    public void call(final UUID courseId) {
+    public boolean call(final UUID courseId) {
         final List<ModuleModel> listModule = this.findAllModuleByCourseIdService.call(courseId);
 
         if (listModule.isEmpty())
-            return;
+            return false;
 
         for (ModuleModel module : listModule) {
             this.deleteAllLessonByModuleIdService.call(module.getId());
         }
 
         this.repository.deleteAll(listModule);
+
+        return true;
     }
 }
