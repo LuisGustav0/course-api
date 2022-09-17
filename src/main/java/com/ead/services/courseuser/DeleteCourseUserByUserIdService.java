@@ -7,6 +7,7 @@ import com.ead.services.users.UserByIdOrElseThrowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.UUID;
 
 @Service
@@ -17,10 +18,11 @@ public class DeleteCourseUserByUserIdService {
 
     private final UserByIdOrElseThrowService userByIdOrElseThrowService;
 
+    @Transactional
     public DeleteCourseUserResponse call(final UUID userId) {
         final UserResponse user = userByIdOrElseThrowService.call(userId);
 
-        this.repository.deleteByUserId(user.getId());
+        this.repository.deleteAllByUserId(user.getId());
 
         return DeleteCourseUserResponse.builder()
                                        .message("Curso do usuario deletado com sucesso!")
