@@ -38,7 +38,8 @@ eureka:
 ead:
   api:
     url:
-      auth-user: http://ead-course-api/ead-course
+      auth-user: http://ead-auth-user-api/ead-auth-user
     path:
       users: /users
+      courses: /courses
       courses-subscription: /courses/subscription
