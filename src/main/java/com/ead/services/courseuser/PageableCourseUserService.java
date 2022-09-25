@@ -1,27 +1,25 @@
 package com.ead.services.courseuser;
 
-import com.ead.clients.authuserapi.PageableUserClientApi;
 import com.ead.assembler.courseuser.PageableUserResponseAssembler;
 import com.ead.model.response.courseuser.PageableCourseUserResponse;
-import com.ead.model.response.courseuser.PageableUserResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Log4j2
 @Service
 @RequiredArgsConstructor
 public class PageableCourseUserService {
-
-    private final PageableUserClientApi pageableUserClientApi;
 
     private final PageableUserResponseAssembler assembler;
 
     public PageableCourseUserResponse call(final UUID courseId,
                                            final Pageable pageable) {
-        final PageableUserResponse response = this.pageableUserClientApi.call(courseId, pageable);
+        log.info("PageableCourseUserService.call CouseId: {}, Page: {}", courseId, pageable.getPageNumber());
 
-        return this.assembler.toResponse(response);
+        return this.assembler.toResponse(null);
     }
 }

@@ -12,6 +12,9 @@ import java.util.UUID;
 
 public class ModuleSpec {
 
+    private ModuleSpec() {
+    }
+
     public static Specification<ModuleModel> withByCourseId(final UUID courseId) {
         return ((root, query, builder) -> {
             query.distinct(true);

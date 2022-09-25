@@ -1,11 +1,11 @@
 package com.ead.services;
 
+import com.ead.assembler.courses.CourseResponseAssembler;
 import com.ead.model.CourseModel;
 import com.ead.model.filter.CourseFilter;
-import com.ead.repositories.CourseRepository;
-import com.ead.assembler.courses.CourseResponseAssembler;
 import com.ead.model.response.CourseResponse;
 import com.ead.model.response.PageCourseResponse;
+import com.ead.repositories.CourseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +19,6 @@ import java.util.List;
 import static com.ead.specifications.CourseSpec.withLevelEquals;
 import static com.ead.specifications.CourseSpec.withNameLike;
 import static com.ead.specifications.CourseSpec.withStatusEquals;
-import static com.ead.specifications.CourseSpec.withUserUserId;
 
 @Service
 @RequiredArgsConstructor
@@ -32,8 +31,7 @@ public class PageableCourseService {
     private Specification<CourseModel> getSpecification(final CourseFilter filter) {
         return withNameLike(filter.getName())
                 .and(withStatusEquals(filter.getStatusE()))
-                .and(withLevelEquals(filter.getLevelE()))
-                .and(withUserUserId(filter.getUserId()));
+                .and(withLevelEquals(filter.getLevelE()));
     }
 
     public PageCourseResponse call(final CourseFilter filter,
