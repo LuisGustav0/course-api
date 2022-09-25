@@ -5,12 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.time.OffsetDateTime;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -22,6 +25,32 @@ import java.util.UUID;
 public class UserModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+
+    @Column(nullable = false, unique = true, length = 50)
+    private String email;
+
+    @Column(nullable = false, length = 150)
+    private String fullName;
+
+    @Column(name = "status", nullable = false)
+    private String statusE;
+
+    @Column(name = "type", nullable = false)
+    private String typeE;
+
+    @Column(nullable = false, length = 20)
+    private String cpf;
+
+    @Column(length = 200)
+    private String imageUrl;
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "listUser")
+    private Set<CourseModel> listCourse;
+
+    @Column(nullable = false, updatable = false)
+    private OffsetDateTime createdAt;
+
+    @Column(nullable = false)
+    private OffsetDateTime updatedAt;
 }

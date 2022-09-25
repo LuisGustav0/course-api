@@ -17,6 +17,9 @@ spring:
     properties:
       hibernate:
         show_sql: true
+  # RabbitMQ
+  rabbitmq:
+    addresses: ${RABBITMQ_ADDRESSES}
 
 # Log
 logging:
@@ -43,3 +46,9 @@ ead:
       users: /users
       courses: /courses
       courses-subscription: /courses/subscription
+  broker:
+    exchange:
+      userEvent: ead.userevent
+    queue:
+      userEventQueue:
+        name: ead.userevent.ms.course

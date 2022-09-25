@@ -1,4 +1,4 @@
-package com.ead.model.response.usercourse;
+package com.ead.model.filter;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeleteUserCourseResponse {
+public class UserFilter {
 
-    private String message;
+    private String fullName;
 }

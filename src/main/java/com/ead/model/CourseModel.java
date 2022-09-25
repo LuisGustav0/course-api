@@ -19,6 +19,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -63,6 +66,14 @@ public class CourseModel implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "course")
     @Fetch(FetchMode.SUBSELECT)
     private Set<ModuleModel> listModules;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "courses_users",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private Set<UserModel> listUser;
 
     @CreationTimestamp
     private OffsetDateTime createdAt;

@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class UserResponse {
+public class UserEventResponse {
 
     private UUID id;
     private String login;
@@ -24,6 +24,8 @@ public class UserResponse {
     private String phoneNumber;
     private String cpf;
     private String imageUrl;
+
+    private String actionTypeE;
 
     private String createdAt;
     private String updatedAt;

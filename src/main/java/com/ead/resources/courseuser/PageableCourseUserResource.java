@@ -1,5 +1,6 @@
 package com.ead.resources.courseuser;
 
+import com.ead.model.filter.UserFilter;
 import com.ead.model.response.courseuser.PageableCourseUserResponse;
 import com.ead.services.courseuser.PageableCourseUserService;
 import lombok.RequiredArgsConstructor;
@@ -23,11 +24,12 @@ public class PageableCourseUserResource {
 
     @GetMapping("/courses/{courseId}/users")
     public ResponseEntity<PageableCourseUserResponse> call(@PathVariable UUID courseId,
+                                                           final UserFilter filter,
                                                            final @PageableDefault(
                                                                    sort = "createdAt",
                                                                    direction = Sort.Direction.DESC
                                                            ) Pageable pageable) {
-        final PageableCourseUserResponse response = this.service.call(courseId, pageable);
+        final PageableCourseUserResponse response = this.service.call(courseId, filter, pageable);
 
         return ResponseEntity.ok(response);
     }
