@@ -17,7 +17,7 @@ public class CreateCourseService {
 
     private final CourseRepository repository;
 
-    private final NotExistsUserInstructorOrAdminByIdService userByIdOrElseThrowService;
+    private final NotExistsUserInstructorOrAdminByIdService notExistsUserInstructorOrAdminByIdService;
 
     private final CourseRequestAssembler requestAssembler;
     private final CourseResponseAssembler responseAssembler;
@@ -26,7 +26,7 @@ public class CreateCourseService {
 
     public CourseResponse call(final CourseRequest request) {
         this.existsCourseByNameService.call(request.getName());
-        this.userByIdOrElseThrowService.call(request.getUserInstructorId());
+        this.notExistsUserInstructorOrAdminByIdService.call(request.getUserInstructorId());
 
         final CourseModel course = this.requestAssembler.toModel(request);
 

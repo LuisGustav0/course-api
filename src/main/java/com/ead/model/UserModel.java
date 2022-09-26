@@ -9,10 +9,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.Set;
@@ -35,9 +38,11 @@ public class UserModel implements Serializable {
     @Column(nullable = false, length = 150)
     private String fullName;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private UserStatusE statusE;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "type", nullable = false)
     private UserTypeE typeE;
 
@@ -55,4 +60,9 @@ public class UserModel implements Serializable {
 
     @Column(nullable = false)
     private OffsetDateTime updatedAt;
+
+    @Transient
+    public boolean isBlocked() {
+        return UserStatusE.BLOCKED.equals(this.statusE);
+    }
 }
