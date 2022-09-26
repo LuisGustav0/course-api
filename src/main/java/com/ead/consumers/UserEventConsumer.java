@@ -5,6 +5,7 @@ import com.ead.enums.ActionTypeE;
 import com.ead.model.UserModel;
 import com.ead.model.response.users.UserEventResponse;
 import com.ead.repositories.UserRepository;
+import com.ead.services.users.DeleteUserByIdService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.annotation.Exchange;
@@ -21,6 +22,8 @@ public class UserEventConsumer {
     private final UserEventResponseAssembler assembler;
 
     private final UserRepository repository;
+
+    private final DeleteUserByIdService deleteUserByIdService;
 
     @RabbitListener(
             bindings = @QueueBinding(
@@ -39,7 +42,7 @@ public class UserEventConsumer {
 
         switch (actionTypeE) {
             case CREATE, UPDATE -> this.repository.save(userModel);
-            case DELETE -> this.repository.deleteById(userModel.getId());
+            case DELETE -> this.deleteUserByIdService.call(userModel.getId());
             default -> throw new UnsupportedOperationException();
         }
     }
