@@ -2,9 +2,11 @@ package com.ead.assembler.courses;
 
 import com.ead.model.CourseModel;
 import com.ead.model.request.CourseRequest;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class CourseRequestAssembler {
 
     public CourseModel toModel(final CourseRequest request) {

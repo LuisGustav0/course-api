@@ -1,5 +1,6 @@
 package com.ead.assembler.users;
 
+import com.ead.enums.UserStatusE;
 import com.ead.model.UserModel;
 import com.ead.model.response.users.UserResponse;
 import org.springframework.stereotype.Component;

@@ -11,6 +11,7 @@ public enum ErrorType {
     COURSE_NAME_EXISTS_BY_NAME_ERROR("Nome do curso já cadastrado."),
     USER_NOT_FOUND("Usuário não encontrado."),
     USER_BLOCKED("Usuário esta bloqueado."),
+    USER_INSTRUCTOROR_ADMIN_NOT_FOUND("Instrutor OU Admin não encontrado."),
     SUBSCRIPTION_COURSE_AND_USER_EXISTS_ERROR("Inscrição do usuário ja existe nesse curso."),
     USER_MUST_BE_INSTRUCTOR_OR_ADMIN_ERROR(" Usuário precisa ser do tipo INSTRUTOR ou ADMIN.");
 

@@ -4,7 +4,7 @@ import com.ead.assembler.users.UserEventResponseAssembler;
 import com.ead.enums.ActionTypeE;
 import com.ead.model.UserModel;
 import com.ead.model.response.users.UserEventResponse;
-import com.ead.services.users.CreateUserService;
+import com.ead.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.annotation.Exchange;
@@ -20,7 +20,7 @@ public class UserEventConsumer {
 
     private final UserEventResponseAssembler assembler;
 
-    private final CreateUserService createUserService;
+    private final UserRepository repository;
 
     @RabbitListener(
             bindings = @QueueBinding(
@@ -38,9 +38,9 @@ public class UserEventConsumer {
         final var actionTypeE = ActionTypeE.valueOf(response.getActionTypeE());
 
         switch (actionTypeE) {
-            case CREATE:
-                this.createUserService.call(userModel);
-                break;
+            case CREATE, UPDATE -> this.repository.save(userModel);
+            case DELETE -> this.repository.deleteById(userModel.getId());
+            default -> throw new UnsupportedOperationException();
         }
     }
 }

@@ -19,7 +19,7 @@ public class CreateCourseResource {
     private final CreateCourseService service;
 
     @PostMapping("/courses")
-    public ResponseEntity<CourseResponse> call(@RequestBody @Valid  CourseRequest request) {
+    public ResponseEntity<CourseResponse> call(@RequestBody @Valid CourseRequest request) {
         final CourseResponse response = this.service.call(request);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);

@@ -1,5 +1,7 @@
 package com.ead.model.response.users;
 
+import com.ead.enums.UserStatusE;
+import com.ead.enums.UserTypeE;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,8 +21,8 @@ public class UserResponse {
     private String login;
     private String email;
     private String fullName;
-    private String statusE;
-    private String typeE;
+    private UserStatusE statusE;
+    private UserTypeE typeE;
     private String phoneNumber;
     private String cpf;
     private String imageUrl;

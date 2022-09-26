@@ -1,5 +1,7 @@
 package com.ead.model;
 
+import com.ead.enums.UserStatusE;
+import com.ead.enums.UserTypeE;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,10 +36,10 @@ public class UserModel implements Serializable {
     private String fullName;
 
     @Column(name = "status", nullable = false)
-    private String statusE;
+    private UserStatusE statusE;
 
     @Column(name = "type", nullable = false)
-    private String typeE;
+    private UserTypeE typeE;
 
     @Column(nullable = false, length = 20)
     private String cpf;

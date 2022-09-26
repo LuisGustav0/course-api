@@ -8,6 +8,7 @@ import com.ead.exceptions.ServiceAuthUserUnavailableException;
 import com.ead.exceptions.SubscriptionCourseAndUserExistsException;
 import com.ead.exceptions.UnexpectedErrorException;
 import com.ead.exceptions.UserBlockedException;
+import com.ead.exceptions.UserInstructorOrAdminNotFoundException;
 import com.ead.exceptions.UserMustBeInstructorOrAdminException;
 import com.ead.exceptions.UserNotFoundException;
 import com.ead.factory.HttpErrorResponseFactory;
@@ -126,6 +127,15 @@ public class HttpExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(UserMustBeInstructorOrAdminException.class)
     public ResponseEntity<HttpErrorResponse> handleUserMustBeInstructorOrAdminException(UserMustBeInstructorOrAdminException ex) {
+        logger.error(ex.getMessage());
+
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(HttpErrorResponseFactory.build(ex.getErrorCode(), ex.getMessage()));
+    }
+
+    @ExceptionHandler(UserInstructorOrAdminNotFoundException.class)
+    public ResponseEntity<HttpErrorResponse> handleUserInstructorNotFoundException(UserInstructorOrAdminNotFoundException ex) {
         logger.error(ex.getMessage());
 
         return ResponseEntity
