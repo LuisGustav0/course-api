@@ -1,6 +1,5 @@
 package com.ead.validations;
 
-import com.ead.enums.UserTypeE;
 import com.ead.exceptions.UserInstructorOrAdminNotFoundException;
 import com.ead.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;

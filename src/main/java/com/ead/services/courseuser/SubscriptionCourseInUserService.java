@@ -24,7 +24,7 @@ public class SubscriptionCourseInUserService {
 
     private final ExistsCourseAndUserService existsCourseAndUserService;
 
-    private final SaveCourseAndUserService saveCourseAndUserService;
+    private final SaveCourseAndUserAndSendNotificationService saveCourseAndUserAndSendNotificationService;
 
     public SubscriptionCourseInUserResponse call(final UUID courseId,
                                                  final SubscriptionCourseInUserRequest request) {
@@ -41,7 +41,7 @@ public class SubscriptionCourseInUserService {
         if (user.isBlocked())
             throw new UserBlockedException();
 
-        this.saveCourseAndUserService.call(courseId, user.getId());
+        this.saveCourseAndUserAndSendNotificationService.call(course, user);
 
         return SubscriptionCourseInUserResponse.builder()
                                                .message("Inscrição de curso com usuário criado com sucesso!")
