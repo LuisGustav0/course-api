@@ -6,6 +6,7 @@ import com.ead.services.lessons.CreateLessonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ public class CreateLessonResource {
 
     private final CreateLessonService service;
 
+    @PreAuthorize("hasAnyRole('INSTRUCTOR')")
     @PostMapping("/modules/{moduleId}/lessons")
     public ResponseEntity<LessonResponse> call(@PathVariable UUID moduleId,
                                                @RequestBody @Valid LessonRequest request) {

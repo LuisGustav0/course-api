@@ -6,6 +6,7 @@ import com.ead.services.lessons.PageLessonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,7 @@ public class PageLessonResource {
 
     private final PageLessonService service;
 
+    @PreAuthorize("hasAnyRole('STUDENT')")
     @GetMapping("/modules/{moduleId}/lessons")
     public ResponseEntity<PageLessonResponse> call(@PathVariable UUID moduleId,
                                                    final LessonFilter filter,

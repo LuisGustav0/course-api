@@ -5,6 +5,7 @@ import com.ead.model.response.modules.ModuleResponse;
 import com.ead.services.modules.UpdateModuleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ public class UpdateModuleResource {
 
     private final UpdateModuleService service;
 
+    @PreAuthorize("hasAnyRole('INSTRUCTOR')")
     @PutMapping("/courses/{courseId}/modules/{id}")
     public ResponseEntity<ModuleResponse> call(@PathVariable UUID id,
                                                @PathVariable UUID courseId,

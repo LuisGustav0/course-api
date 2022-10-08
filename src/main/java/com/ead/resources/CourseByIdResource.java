@@ -4,6 +4,7 @@ import com.ead.model.response.CourseResponse;
 import com.ead.services.CourseByIdService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ public class CourseByIdResource {
     private final CourseByIdService service;
 
     @GetMapping("/courses/{id}")
+    @PreAuthorize("hasAnyRole('STUDENT')")
     public ResponseEntity<CourseResponse> call(@PathVariable UUID id) {
         final CourseResponse response = this.service.call(id);
 
